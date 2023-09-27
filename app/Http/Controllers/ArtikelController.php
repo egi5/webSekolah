@@ -4,12 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Artikels;
+use App\Services\SummernoteService;
+use App\Services\UploadService;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Str;
 
 class ArtikelController extends Controller
 {
+    private $summernoteService;
+    private $uploadService;
+
+    public function __construct(SummernoteService $summernoteService, UploadService $uploadService)
+    {
+        $this->summernoteService    = $summernoteService;
+        $this->uploadService        = $uploadService;
+    }
+
     public function index(){
-        // $artikel = Artikels::get();
-        return view('menuAdmin/artikel/add');
+        $artikel = Artikels::get();
+        return view('menuAdmin/artikel/index', compact('artikel'));
+    }
+
+    public function show(Artikels $artikel){
+        $artikel = Artikels::find($artikel->id);
+        return view('menuAdmin/artikel/index', compact('artikel'));
     }
 
     public function create(){
@@ -22,74 +40,45 @@ class ArtikelController extends Controller
         //     'detail'=> 'required',
         //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         // ]);
-
-    
     
         $data       = [
-            'judul'     => $request->input('judul'),
-            'thumbnail' => $request->input('judul'),
-            'deskripsi' => $request->input('deskripsi'),
+            'judul'     => $request->judul,
+            'slug'      => SlugService::createSlug(Artikels::class, 'slug', $request->judul),
+            'thumbnail' => $this->uploadService->imageUpload('artikel'),
+            'deskripsi' => $this->summernoteService->imageUpload('artikel'),
             'tanggal'   => date("Y-m-d")
         ];
         
         Artikels::create($data);
 
-        $artikelId          = Artikels::latest('id')->first();
-        $gambar             = $request->file('gambar');
-        $deskripsiGambar    = $request->input('deskripsiGambar');
-        
-        for ($i = 0; $i < count($gambar); $i++) {
-            $destinationPath    = 'image/';
-            $file               = $gambar[$i];
-            $profileImage       = date('YmdHis'). "." . $file->getClientOriginalName();
-            $gambar[$i]         = $profileImage;
-
-            // $request->file->move($destinationPath, $profileImage);
-
-            $dataGambar = [
-                'artikel_id'        => $artikelId['id'],
-                'gambar'            => $gambar[$i],
-                'deskripsi_gambar'  => $deskripsiGambar[$i]
-            ];
-            ArtikelDetail::create($dataGambar);           
-        }
-        
-        return json_encode($gambar);
+        return redirect()->route('artikel.index')->with('success','Data berhasil ditambah');
     }
 
-    public function edit(Request $request, $id){
-        return view('menuAdmin/artikel/edit');
+    public function edit(Artikels $artikel){
+
+        return view('menuAdmin/artikel/edit', compact('artikel'));
     }
 
-    public function update(Request $request, $id){
-        $data = [
-            'id'        => $id,
-            'judul'     => $request->input('judul'),
-            'deskripsi' => $request->input('deskripsi'),
+    public function update(Request $request, Artikels $artikel){
+        $deskripsi = $this->summernoteService->imageUpload('artikel');
+        
+        $data       = [
+            'judul'     => $request->judul,
+            'slug'      => SlugService::createSlug(Artikels::class, 'slug', $request->judul),
+            'thumbnail' => $this->uploadService->imageUpload('artikel'),
+            'deskripsi' => $deskripsi,
         ];
 
-        Artikels::update($data);
+        Artikels::where('id', $artikel->id )->update($data);
 
-        // $idGambar      = $request->input('id_detail');
-        // $detailGambar  = ArtikelDetail::delete(['artikel_id' => $id]);
-        // $detailGambar::delete($idGambar);
+        return redirect()->route('artikel.index')->with('success','Data berhasil diupdate');
 
-        // $gambar         = $request->input('gambar');
-        // $deskripsiGambar= $request->input('deskripsiGambar');
-
-        // for($i = 0; $i < count($gambar); $i++){
-        //     $destinationPath    = 'image/';
-        //     $file               = $gambar[$i];
-        //     $profileImage       = date('YmdHis'). "." . $file->getClientOriginalName();
-        //     $gambar[$i]         = $profileImage;
-
-        //     // $request->file->move($destinationPath, $profileImage);
-
-        //     $dataGambar = [
-        //         'artikel_id'        => $id,
-        //         'gambar'            => $gambar[$i],
-        //         'deskripsi_gambar'  => $deskripsiGambar[$i]
-        //     ]; 
-        // }
     }
+
+    public function destroy(Artikels $artikel)
+    {   
+        Artikels::destroy($artikel->id);
+        return redirect()->route('artikel.index')->with('success','Data berhasil dihapus');
+    }
+
 }

@@ -2,12 +2,16 @@
     'title' => 'Edit Artikel'
 ])
 
-@push('css')
-    <!-- Summernote -->
-    <link href={{ asset('menuAdmin/vendor/summernote/summernote.min.css')}} rel="stylesheet">
-@endpush
 
 @section('containerMenuAdmin')
+{{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --}}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 <div class="card" style="width: 80rem;">
     <div class="card-header">
         <div class="row justify-content-between">
@@ -18,20 +22,20 @@
                 <h3 style="color: #566573;">Edit Artikel</h3>
             </div>
             <div class="col-4 text-right">
-                <a href="/tambahArtikel" class="btn btn-primary btn-sm">Kembali</a>
+                <a href="/artikel" class="btn btn-primary btn-sm">Kembali</a>
             </div>
         </div>
     </div>
 
     <div class="card-body">
-        <form  method="POST" action="{{ route('artikel.update') }}" id="form" enctype="multipart/form-data">
+        <form  method="POST" action="{{ route('artikel.update',$artikel->id) }}" id="form" enctype="multipart/form-data">
+            @method('PUT')
             {{ csrf_field() }}
 
             <div class="row">
                 <div class="col-8">
                     <label for="nama" class="form-label">Judul Artikel</label>
                     <input type="text" class="form-control" id="judul" name="judul" value="{{$artikel->judul}}">
-                    <div class="invalid-feedback error_judul"></div>
                 </div>
                 
                 <div class="col">
@@ -44,22 +48,25 @@
             <div class="row mt-3">
                 <div class="col">
                     <label for="nama" class="form-label">Isi Artikel</label> 
-                    <textarea class="form-control" id="isi" name="deskripsi" rows="10" placeholder="Silahkan tulis isi artikel" autofocus>{{$artikel->deskripsi}}</textarea>
-                    <div class="invalid-feedback error_deskripsi"></div>
+                    <textarea class="form-control" id="isi" name="isi" rows="10" autofocus>{{$artikel->deskripsi}}</textarea>
                 </div>
             </div>
+
+            <div class="row mt-3">
+                <div class="col text-right"> 
+                    <a href="/artikel" class="btn btn-danger">Batal</a>
+                    <button id="tombolSimpan" class="btn px-5 btn-primary" type="submit">Update</button>
+                </div>
+              </div>
         </form>
     </div>
 </div>
-@push('js')
-<!-- DataTables -->
-<script src="menuAdmin/vendor/summernote/summernote.min"></script>
-<script src="menuAdmin/vendor/datatables/jquery.dataTables.min.js"></script>
 <script>
-    $(documment).ready(function(){
-        $("#isi").summernote();
+    $('#isi').summernote({
+      placeholder: "Silahkan tulis isi artikel",
+      tabsize:2,
+      height:300
     });
 </script>
-@endpush
 
 @endsection
