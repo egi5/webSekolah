@@ -21,13 +21,13 @@
         <h3 style="color: #566573;">Tambah Artikel</h3>
       </div>
       <div class="col-4 text-right">
-        <a href="/tambahArtikel" class="btn btn-primary btn-sm">Kembali</a>
+        <a href="/artikel" class="btn btn-primary btn-sm">Kembali</a>
       </div>
     </div>
   </div>
   
   <div class="card-body">
-    <form  method="POST" action="{{ route('artikel.store') }}" id="form" enctype="multipart/form-data">
+    <form  method="POST" action="{{ route('artikel.store') }}" id="formArtikel" enctype="multipart/form-data">
       {{ csrf_field() }}
   
       <div class="row">
@@ -39,20 +39,21 @@
                   
         <div class="col">
           <label>Thumbnail</label>
-          <input type="file" name="gambar" id="gambar" class="dropify form-control" data-height="190" data-allowed-file-extensions="png jpg gif jpeg svg webp jfif" required>
+          <input type="file" name="file" id="file" class="dropify form-control" data-height="190" data-allowed-file-extensions="png jpg gif jpeg svg webp jfif" required>
         </div>
       </div>
               
       <div class="row mt-3">
         <div class="col">
           <label for="nama" class="form-label">Isi Artikel</label> 
-          <textarea class="form-control" id="isiArtikel" name="deskripsi" rows="10" autofocus></textarea>
+          <textarea class="form-control" id="isi" name="isi" rows="10" autofocus></textarea>
         </div>
       </div>
 
       <div class="row mt-3">
         <div class="col text-right"> 
-            <a href="#" class="btn btn-success">Save</a>
+            <a href="#" class="btn btn-danger">Batal</a>
+            <button id="tombolSimpan" class="btn px-5 btn-primary" type="submit">Simpan</button>
         </div>
       </div>
 
@@ -61,30 +62,12 @@
 </div>
 
 <script>
-  $('#isiArtikel').summernote({
+  $('#isi').summernote({
       placeholder: "Silahkan tulis isi artikel",
       tabsize:2,
       height:300
   });
-
-  $('#formArtikel').submit(function(e) {
-      e.preventDefault();
-        
-      var formData = new FormData(this);
-      $.ajax({
-        url: $(this).attr('action'),
-        method: 'post',
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: 'json',
-        success: function(response) {
-          alert(response);
-        }
-      });
-
-  })
+  
 </script>
 
 @endsection

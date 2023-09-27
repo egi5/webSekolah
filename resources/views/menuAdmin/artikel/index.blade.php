@@ -9,21 +9,27 @@
 
 @section('containerMenuAdmin')
 <div class="card" style="width: 80rem;">
-  <div class="card-header">
-      <div class="row justify-content-between">
-          <div class="col-4 text-left">
-              <h4>{{date("d/m/Y")}}</h4>
-          </div>
-          <div class="col-4 text-center">
-              <h3 style="color: #566573;">Data Pengumuman</h3>
-          </div>
-          <div class="col-4 text-right">
-              <a href="{{route('artikel.create')}}" class="btn btn-primary btn-sm">Tambah Pengumuman</a>
-          </div>
-      </div>
-      
-      {{-- <hr class="mt-0 mb-4"> --}}
-  </div>
+    <div class="card-header">
+        <div class="row justify-content-between">
+            <div class="col-4 text-left">
+                <h4>{{date("d/m/Y")}}</h4>
+            </div>
+            <div class="col-4 text-center">
+                <h3 style="color: #566573;">Data Artikel</h3>
+            </div>
+            <div class="col-4 text-right">
+                <a href="{{route('artikel.create')}}" class="btn btn-primary btn-sm">Tambah Artikel</a>
+            </div>
+        </div>
+        
+        {{-- <hr class="mt-0 mb-4"> --}}
+    </div>
+
+    @if(session()->has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
   
   <div class="card-body table-responsive">
       <table id="tabelArtikel" class="table table-bordered table-hover">
@@ -31,8 +37,8 @@
               <tr>
                   <th class="text-center" width="3%">No</th>
                   <th class="text-center" width="10%">Tanggal</th>
-                  <th class="text-center" width="52%">Pengumuman</th>
-                  <th class="text-center" width="15%">Aksi</th>
+                  <th class="text-center" width="53%">Judul</th>
+                  <th class="text-center" width="20%">Aksi</th>
               </tr>
           </thead>
           <tbody>
@@ -40,18 +46,22 @@
                   $no=1;
               @endphp
 
-              {{-- @foreach($artikel as $art)
+              @foreach($artikel as $art)
               <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $art->tanggal }}</td>
                 <td>{{ $art->judul }}</td>
                 <td>
-                  <a href="show/{{ $art->$id }}" class="btn btn-success">Show</a>
-                  <a href="edit/{{ $art->$id }}" class="btn btn-info">Edit</a>
-                  <a href="delete/{{ $art->$id }}" class="btn btn-danger">Delete</a>  
+                    <a href="/artikel/{{$art->id}}" class="btn btn-success">Show</a>
+                    <a href="{{route('artikel.edit', $art->id)}}" class="btn btn-info">Edit</a>
+                    <form action="{{ route('artikel.destroy',$art->id) }}" method="post" class="d-inline">
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data Artikel ini?')">Delete</button>
+                    </form>  
                 </td>
               </tr>
-              @endforeach --}}
+              @endforeach
           </tbody>
       </table>
   </div>

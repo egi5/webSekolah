@@ -103,7 +103,7 @@ Route::get('/admin',function(){
 Route::get('/artikelIndex',function(){
     return view('menuAdmin.artikel.index');
 });
-Route::get('/tambahArtikel',[ArtikelController::class, 'index']);
+Route::get('/artikel/{$id}',[ArtikelController::class, 'show']);
 Route::resource('/artikel', ArtikelController::class);
 
 //pengumuman

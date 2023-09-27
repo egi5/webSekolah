@@ -31,7 +31,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="/tambahArtikel">
+            <a class="nav-link" href="/artikel">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Artikel</span></a>
         </li>
