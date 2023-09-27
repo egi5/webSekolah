@@ -8,8 +8,8 @@ use App\Models\Artikels;
 class ArtikelController extends Controller
 {
     public function index(){
-        $artikel = Artikels::with(['user'])->get();
-        return view('menuAdmin/artikel/add', $artikel);
+        // $artikel = Artikels::get();
+        return view('menuAdmin/artikel/add');
     }
 
     public function create(){
@@ -22,9 +22,12 @@ class ArtikelController extends Controller
         //     'detail'=> 'required',
         //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         // ]);
+
+    
     
         $data       = [
             'judul'     => $request->input('judul'),
+            'thumbnail' => $request->input('judul'),
             'deskripsi' => $request->input('deskripsi'),
             'tanggal'   => date("Y-m-d")
         ];

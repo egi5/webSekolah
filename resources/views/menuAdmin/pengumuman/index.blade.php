@@ -46,7 +46,9 @@
                   <td>{{ $art->judul }}</td>
                   <td>{{ $art->tanggal }}</td>
                   <td>
-                   
+                    <a href="show/{{ 1 }}" class="btn btn-success">Show</a>
+                    <a href="edit/{{ 1 }}" class="btn btn-info">Edit</a>
+                    <a href="delete/{{ 1 }}" class="btn btn-danger">Delete</a>  
                   </td>
                 </tr>
                 @endforeach --}}
