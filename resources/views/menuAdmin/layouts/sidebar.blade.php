@@ -38,7 +38,7 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="/tambahPengumuman">
+            <a class="nav-link" href="/adminPengumuman">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Pengumuman</span></a>
         </li>

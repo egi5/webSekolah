@@ -107,5 +107,4 @@ Route::get('/artikel/{$id}',[ArtikelController::class, 'show']);
 Route::resource('/artikel', ArtikelController::class);
 
 //pengumuman
-Route::get('/tambahPengumuman', [PengumumanController::class, 'index']);
 Route::resource('/adminPengumuman', PengumumanController::class);

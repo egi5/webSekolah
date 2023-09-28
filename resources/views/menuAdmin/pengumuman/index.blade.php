@@ -24,37 +24,47 @@
         
         {{-- <hr class="mt-0 mb-4"> --}}
     </div>
-    
-    <div class="card-body table-responsive">
-        <table id="tabelArtikel" class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th class="text-center" width="3%">No</th>
-                    <th class="text-center" width="10%">Tanggal</th>
-                    <th class="text-center" width="52%">Pengumuman</th>
-                    <th class="text-center" width="15%">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
+
+    @if(session()->has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+  
+  <div class="card-body table-responsive">
+      <table id="tabelPengumuman" class="table table-bordered table-hover">
+          <thead>
+              <tr>
+                  <th class="text-center" width="3%">No</th>
+                  <th class="text-center" width="10%">Tanggal</th>
+                  <th class="text-center" width="53%">Judul Pengumuman</th>
+                  <th class="text-center" width="20%">Aksi</th>
+              </tr>
+          </thead>
+          <tbody>
                 @php 
                     $no=1;
                 @endphp
 
-                {{-- @foreach($artikel as $art)
+                @foreach($pengumuman as $art)
                 <tr>
-                  <td>{{ $no++ }}</td>
-                  <td>{{ $art->judul }}</td>
-                  <td>{{ $art->tanggal }}</td>
-                  <td>
-                    <a href="show/{{ 1 }}" class="btn btn-success">Show</a>
-                    <a href="edit/{{ 1 }}" class="btn btn-info">Edit</a>
-                    <a href="delete/{{ 1 }}" class="btn btn-danger">Delete</a>  
-                  </td>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $art->tanggal }}</td>
+                    <td>{{ $art->judul }}</td>
+                    <td>
+                        <a href="/artikel/{{$art->id}}" class="btn btn-success">Show</a>
+                        <a href="{{route('adminPengumuman.edit', $art->id)}}" class="btn btn-info">Edit</a>
+                        <form action="{{ route('artikel.destroy',$art->id) }}" method="post" class="d-inline">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data Artikel ini?')">Delete</button>
+                        </form>  
+                    </td>
                 </tr>
-                @endforeach --}}
-            </tbody>
-        </table>
-    </div>
+                @endforeach
+          </tbody>
+      </table>
+  </div>
 </div>
 @push('js')
 <!-- DataTables -->
@@ -62,7 +72,7 @@
 <script src="menuAdmin/vendor/datatables/jquery.dataTables.min.js"></script>
 <script>
   $(function () {
-    $("#tabelArtikel").DataTable();
+    $("#tabelPengumuman").DataTable();
   });
 </script>
 @endpush
