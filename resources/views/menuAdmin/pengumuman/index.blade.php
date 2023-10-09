@@ -52,9 +52,9 @@
                     <td>{{ $art->tanggal }}</td>
                     <td>{{ $art->judul }}</td>
                     <td>
-                        <a href="/artikel/{{$art->id}}" class="btn btn-success">Show</a>
-                        <a href="{{route('adminPengumuman.edit', $art->id)}}" class="btn btn-info">Edit</a>
-                        <form action="{{ route('artikel.destroy',$art->id) }}" method="post" class="d-inline">
+                        <a href="adminPengumuman/{{$art->id}}" class="btn btn-success">Show</a>
+                        <a href="adminPengumuman/{{ $art->id }}/edit" class="btn btn-info">Edit</a>
+                        <form action="{{ route('adminPengumuman.destroy',$art->id) }}" method="post" class="d-inline">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data Artikel ini?')">Delete</button>

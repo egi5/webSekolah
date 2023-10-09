@@ -11,5 +11,8 @@ class Pendaftaran extends Model
     use HasFactory;
     protected $table    = 'pendaftaran';
     protected $primaryKey = 'id';
-    protected $guarded  = ['id'];
+    protected $fillable = [
+        'slug','thumbnail', 'deskripsi', 'link_pendaftaran'
+    ];
+
 }

@@ -13,7 +13,8 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('thumbnail')->nullable();
             $table->text('deskripsi')->nullable();
-            $table->text('contact')->nullable();
+            $table->text('contact_telp')->nullable();
+            $table->text('contact_wa')->nullable();
             $table->text('email')->nullable();
             $table->timestamps();
         });

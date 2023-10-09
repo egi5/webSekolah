@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\JurusanController;
 
@@ -108,3 +109,7 @@ Route::resource('/artikel', ArtikelController::class);
 
 //pengumuman
 Route::resource('/adminPengumuman', PengumumanController::class);
+
+//Pendaftaran
+// Route::resource('/adminPendaftaran', PengumumanController::class);
+Route::resource('/adminPendaftaran', PendaftaranController::class);

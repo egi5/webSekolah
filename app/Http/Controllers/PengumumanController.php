@@ -49,8 +49,9 @@ class PengumumanController extends Controller
         return redirect()->route('adminPengumuman.index')->with('success','Data berhasil ditambah');
     }
 
-    public function edit(Pengumuman $pengumuman)
+    public function edit($id)
     {   
+        $pengumuman = Pengumuman::find($id);
         return view('menuAdmin.pengumuman.edit',compact('pengumuman'));
     }
 

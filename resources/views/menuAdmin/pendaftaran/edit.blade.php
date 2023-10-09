@@ -1,5 +1,5 @@
 @extends('menuAdmin.home', [
-    'title' => 'Edit Pengumuman'
+    'title' => 'Edit Artikel'
 ])
 
 
@@ -19,23 +19,23 @@
                 <h4>{{date("d/m/Y")}}</h4>
             </div>
             <div class="col-4 text-center">
-                <h3 style="color: #566573;">Edit Pengumuman</h3>
+                <h3 style="color: #566573;">Edit Info Pendaftaran</h3>
             </div>
             <div class="col-4 text-right">
-                <a href="/adminPengumuman" class="btn btn-primary btn-sm">Kembali</a>
+                <a href="/artikel" class="btn btn-primary btn-sm">Kembali</a>
             </div>
         </div>
     </div>
 
     <div class="card-body">
-        <form  method="POST" action="adminPengumuman/{{ $pengumuman->id }}" id="form" enctype="multipart/form-data">
+        <form  method="POST" action="{{ route('adminPendaftaran.update', $pendaftaran->id) }}" id="form" enctype="multipart/form-data">
             @method('PUT')
             {{ csrf_field() }}
 
             <div class="row">
                 <div class="col-8">
-                    <label for="nama" class="form-label">Judul Pengumuman</label>
-                    <input type="text" class="form-control" id="judul" name="judul" value="{{ $pengumuman->judul}}">
+                    <label for="nama" class="form-label">Link Pendaftaran</label>
+                    <input type="text" class="form-control" id="link" name="link" value="{{ $pendaftaran->link_pendaftaran }}">
                 </div>
                 
                 <div class="col">
@@ -47,14 +47,14 @@
 
             <div class="row mt-3">
                 <div class="col">
-                    <label for="nama" class="form-label">Isi Artikel</label> 
-                    <textarea class="form-control" id="isi" name="isi" rows="10" autofocus>{{$pengumuman->deskripsi}}</textarea>
+                    <label for="nama" class="form-label">Isi Informasi</label> 
+                    <textarea class="form-control" id="isi" name="isi" rows="10" autofocus>{{ $pendaftaran->deskripsi }}</textarea>
                 </div>
             </div>
 
             <div class="row mt-3">
                 <div class="col text-right"> 
-                    <a href="/artikel" class="btn btn-danger">Batal</a>
+                    <a href="/adminPendaftaran" class="btn btn-danger">Batal</a>
                     <button id="tombolSimpan" class="btn px-5 btn-primary" type="submit">Update</button>
                 </div>
               </div>
@@ -63,7 +63,7 @@
 </div>
 <script>
     $('#isi').summernote({
-      placeholder: "Silahkan tulis isi artikel",
+      placeholder: "Silahkan tulis isi info pendaftaran",
       tabsize:2,
       height:300
     });
