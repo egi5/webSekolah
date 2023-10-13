@@ -65,15 +65,15 @@ class PengumumanController extends Controller
             'deskripsi' => $deskripsi,
         ];
 
-        pengumuman::where('id', $artikel->id )->update($data);
+        pengumuman::where('id', $request->id )->update($data);
 
         return redirect()->route('adminPengumuman.index')->with('success','Data berhasil diupdate');
 
     }
 
-    public function destroy(Pengumuman $pengumuman)
+    public function destroy($id)
     {   
-        Pengumuman::destroy($pengumuman->id);
-        return redirect()->route('adminPengumuman.index')->with('success','Data berhasil dihapus');
+        Pengumuman::destroy($id);
+        return redirect()->route('adminPengumuman.index')->with('error','Data berhasil dihapus');
     }
 }

@@ -8,9 +8,6 @@ use App\Models\Pendaftaran;
 
 class PendaftaranSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         Pendaftaran::create([

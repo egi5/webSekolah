@@ -30,6 +30,12 @@
             {{ session('success') }}
         </div>
     @endif
+
+    @if(session()->has('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
   
   <div class="card-body table-responsive">
       <table id="tabelPengumuman" class="table table-bordered table-hover">
@@ -54,7 +60,7 @@
                     <td>
                         <a href="adminPengumuman/{{$art->id}}" class="btn btn-success">Show</a>
                         <a href="adminPengumuman/{{ $art->id }}/edit" class="btn btn-info">Edit</a>
-                        <form action="{{ route('adminPengumuman.destroy',$art->id) }}" method="post" class="d-inline">
+                        <form action="adminPengumuman/{{$art->id}}" method="post" class="d-inline">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data Artikel ini?')">Delete</button>

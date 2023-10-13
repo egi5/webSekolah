@@ -11,5 +11,7 @@ class Tentang extends Model
     use HasFactory;
     protected $table    = 'tentang';
     protected $primaryKey = 'id';
-    protected $guarded  = ['id'];
+    protected $fillable = [
+        'slug','thumbnail', 'deskripsi', 'contact_telp', 'contact_wa', 'email'
+    ];
 }
