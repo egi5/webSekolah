@@ -101,15 +101,13 @@ Route::get('/admin',function(){
 });
 
 //Admin artikel
-Route::get('/artikelIndex',function(){
-    return view('menuAdmin.artikel.index');
-});
-Route::get('/artikel/{$id}',[ArtikelController::class, 'show']);
 Route::resource('/artikel', ArtikelController::class);
 
 //pengumuman
 Route::resource('/adminPengumuman', PengumumanController::class);
 
 //Pendaftaran
-// Route::resource('/adminPendaftaran', PengumumanController::class);
 Route::resource('/adminPendaftaran', PendaftaranController::class);
+
+//Tentang Sekolah
+Route::resource('/adminTentang', TentangController::class);

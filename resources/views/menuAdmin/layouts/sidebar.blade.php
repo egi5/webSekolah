@@ -53,14 +53,14 @@
 
         <!-- Nav Item - Tentang-->
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link" href="/adminTentang">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tentang</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link" href="/adminJurusan">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Jurusan</span>
             </a>

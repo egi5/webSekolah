@@ -1,5 +1,5 @@
 @extends('menuAdmin.home', [
-    'title' => 'Info Pendaftaran'
+    'title' => 'Data Sekolah'
 ])
 
 @push('css')
@@ -12,7 +12,7 @@
     <div class="card-header">
         <div class="row justify-content-between">
             <div class="col-4 text-center">
-                <h3 style="color: #566573;">Pendaftaran</h3>
+                <h3 style="color: #566573;">Data Sekolah</h3>
             </div>
             <div class="col-4 text-center">
                 <h4>{{date("d/m/Y")}}</h4>
@@ -29,21 +29,23 @@
     @endif
   
   <div class="card-body table-responsive">
-      <table id="tabelArtikel" class="table table-bordered table-hover">
+      <table id="tabelTentang" class="table table-bordered table-hover">
           <thead>
               <tr>
-                  <th class="text-center" width="10%">link</th>
-                  <th class="text-center" width="53%">Isi</th>
+                  <th class="text-center" width="10%">Kontak</th>
+                  <th class="text-center" width="10%">Email</th>
+                  <th class="text-center" width="53%">Deskripsi</th>
                   <th class="text-center" width="5%">Aksi</th>
               </tr>
           </thead>
           <tbody>
-              @foreach($pendaftaran as $pdt)
+              @foreach($tentang as $tg)
               <tr>
-                <td>{{ $pdt->link_pendaftaran }}</td>
-                <td>{{ $pdt->deskripsi }}</td>
+                <td>{{ $tg->contact_telp }} / {{ $tg->contact_wa }}</td>
+                <td>{{ $tg->email }}</td>
+                <td>{{ $tg->deskripsi }}</td>
                 <td>
-                    <a href="{{route('adminPendaftaran.edit', $pdt->id)}}" class="btn btn-info">Edit</a>
+                    <a href="{{route('adminTentang.edit', $tg->id)}}" class="btn btn-info">Edit</a>
                 </td>
               </tr>
               @endforeach
@@ -57,7 +59,7 @@
 <script src="menuAdmin/vendor/datatables/jquery.dataTables.min.js"></script>
 <script>
   $(function () {
-    $("#tabelArtikel").DataTable();
+    $("#tabelTentang").DataTable();
   });
 </script>
 @endpush
