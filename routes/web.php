@@ -9,6 +9,8 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\RegistrasiController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,9 +97,12 @@ Route::get('/multimedia',function(){
 
 //route admin
 Route::get('/admin',function(){
-    return view('menuAdmin.home',[
-        "title"=>"Admin"
+    return view('menuAdmin.login',[
+        "title"=>"Login SMKS YP Kota Blitar"
     ]);
+    // return view('menuAdmin.home',[
+    //     "title"=>"Admin"
+    // ]);
 });
 
 //Admin artikel
@@ -111,3 +116,9 @@ Route::resource('/adminPendaftaran', PendaftaranController::class);
 
 //Tentang Sekolah
 Route::resource('/adminTentang', TentangController::class);
+
+//Registrasi
+Route::resource('/registrasi', RegistrasiController::class);
+
+//login
+Route::post('/login', [LoginController::class, "authenticate"]);
