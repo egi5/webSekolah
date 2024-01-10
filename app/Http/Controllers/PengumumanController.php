@@ -56,13 +56,13 @@ class PengumumanController extends Controller
     }
 
     public function update(Request $request, Pengumuman $pengumuman){
-        $deskripsi = $this->summernoteService->imageUpload('pengumuman');
+        // $deskripsi = $this->summernoteService->imageUpload('pengumuman');
         
         $data       = [
             'judul'     => $request->judul,
             'slug'      => SlugService::createSlug(Pengumuman::class, 'slug', $request->judul),
             'thumbnail' => $this->uploadService->imageUpload('pengumuman'),
-            'deskripsi' => $deskripsi,
+            'deskripsi' => $this->summernoteService->imageUpload('pengumuman')
         ];
 
         pengumuman::where('id', $request->id )->update($data);

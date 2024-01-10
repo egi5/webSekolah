@@ -22,17 +22,18 @@
                             <a class="dropdown-item" href="/tbsm">Teknik Bisnis Sepeda Motor </a>
                             <a class="dropdown-item" href="/tkj">Teknik Komputer Jaringan </a>
                             <a class="dropdown-item" href="/elektro">Teknik Elektro </a>
-                            <a class="dropdown-item" href="/multimedia">Multimedia </a>
+                            <a class="dropdown-item" href="/dkv">Desain Komunikasi Visual </a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown {{ ($title==="pengajar"|| $title==="about") ? 'active' :'' }}">
+                    <li class="nav-item {{ ($title==="About") ? 'active' :'' }}"><a class="nav-link" href="/tentang">Tentang</a></li>
+                    {{-- <li class="nav-item dropdown {{ ($title==="pengajar"|| $title==="about") ? 'active' :'' }}">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Tentang </a>
                         <div class="dropdown-menu" aria-labelledby="dropdown-a">
                             <a class="dropdown-item" href="/pengajar">Profil Guru</a>
                             <a class="dropdown-item" href="/about">Profil Sekolah</a>
                         </div>
-                    </li>
-                    <li class="nav-item {{ ($title==="Pendaftaran Siswa Baru") ? 'active' :'' }}"><a class="nav-link" href="/pendaftaran">Informasi Pendaftaran</a></li>
+                    </li> --}}
+                    <li class="nav-item {{ ($title==="Pendaftaran") ? 'active' :'' }}"><a class="nav-link" href="/pendaftaran">Informasi Pendaftaran</a></li>
                 </ul>
             </div>
         </div>

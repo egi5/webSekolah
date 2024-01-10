@@ -12,59 +12,79 @@
         </a>
 
         <!-- Divider -->
-        <hr class="sidebar-divider my-0">
+        {{-- <hr class="sidebar-divider my-0"> --}}
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        {{-- <li class="nav-item active">
             <a class="nav-link" href="index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
-        </li>
+        </li> --}}
 
         <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading">
+        <div class="sidebar-heading" style="font-size:1em; padding-bottom:5pt;">
             Content
         </div>
+        <br>
+        <hr class="sidebar-divider">
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link" href="/artikel">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Artikel</span></a>
+                <i class="fas fa-newspaper"></i>
+                <span>Kegiatan</span></a>
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link" href="/adminPengumuman">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fas fa-bullhorn"></i>
                 <span>Pengumuman</span></a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Profil Jurusan</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Jurusan:</h6>
+                    <a class="collapse-item" href="#">Teknik Kendaraan Ringan</a>
+                    <a class="collapse-item" href="#">Teknik Bisnis Sepeda Motor</a>
+                    <a class="collapse-item" href="#">Teknik Komputer Jaringan</a>
+                    <a class="collapse-item" href="#">Teknik Elektro</a>
+                    <a class="collapse-item" href="#">Desain Komunikasi Visual</a>
+                </div>
+            </div>
+        </li>
+
         <!-- Divider -->
-        <hr class="sidebar-divider">
+        {{-- <hr class="sidebar-divider"> --}}
 
         <!-- Heading -->
-        <div class="sidebar-heading">
+        {{-- <div class="sidebar-heading">
             Menu
-        </div>
+        </div> --}}
 
         <!-- Nav Item - Tentang-->
         <li class="nav-item">
             <a class="nav-link" href="/adminTentang">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-info-circle"></i>
                 <span>Tentang</span>
             </a>
         </li>
-
+{{-- 
         <li class="nav-item">
             <a class="nav-link" href="/adminJurusan">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Jurusan</span>
             </a>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
             <a class="nav-link" href="/adminPendaftaran">
