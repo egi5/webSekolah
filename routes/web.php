@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ArtikelShowController;
+use App\Http\Controllers\HomeViewController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PengumumanShowController;
 use App\Http\Controllers\PendaftaranController;
@@ -26,11 +27,7 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('menuUtama.home',[
-        "title"=>"Home"
-    ]);
-});
+Route::get('/',[HomeViewController::class, 'index']);
 
 Route::get('/tentang', function () {
     return view('menuUtama.about',[
