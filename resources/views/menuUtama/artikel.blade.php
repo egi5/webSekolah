@@ -1,5 +1,5 @@
 @extends('home', [
-    'title' => 'Pengumuman'
+    'title' => 'Kegiatan'
 ])
 
 @section('containerMenuUtama')

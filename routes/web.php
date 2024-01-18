@@ -12,6 +12,7 @@ use App\Http\Controllers\PengumumanShowController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PendaftaranShowController;
 use App\Http\Controllers\TentangController;
+use App\Http\Controllers\TentangShowController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\LoginController;
@@ -29,15 +30,7 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/',[HomeViewController::class, 'index']);
 
-Route::get('/tentang', function () {
-    return view('menuUtama.about',[
-        "title"=>"Tentang"
-    ]);
-});
-
-Route::get('/Login', function () {
-    return ('login');
-});
+Route::get('/tentang', [TentangShowController::class, 'index']);
 
 Route::get('/pengajar',function(){
     return view('menuUtama.pengajar',[
@@ -92,14 +85,14 @@ Route::get('/dkv',function(){
 //end route jurusan
 
 //route admin
-//Route::get('/admin',function(){
+Route::get('/admin',function(){
   //  return view('menuAdmin.login',[
     //    "title"=>"Login SMKS YP Kota Blitar"
     //]);
-    // return view('menuAdmin.home',[
-    //     "title"=>"Admin"
-    // ]);
-//});
+    return view('menuAdmin.home',[
+        "title"=>"Admin"
+    ]);
+});
 
 //Admin artikel
 Route::resource('/artikel', ArtikelController::class);
@@ -118,3 +111,4 @@ Route::resource('/registrasi', RegistrasiController::class);
 
 //login
 Route::post('/login', [LoginController::class, "authenticate"]);
+

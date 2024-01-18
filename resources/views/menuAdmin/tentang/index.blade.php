@@ -43,7 +43,7 @@
               <tr>
                 <td>{{ $tg->contact_telp }} / {{ $tg->contact_wa }}</td>
                 <td>{{ $tg->email }}</td>
-                <td>{{ $tg->deskripsi }}</td>
+                <td>{!! $tg->deskripsi !!}</td>
                 <td>
                     <a href="{{route('adminTentang.edit', $tg->id)}}" class="btn btn-info">Edit</a>
                 </td>

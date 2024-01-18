@@ -1,8 +1,10 @@
-@extends('home')
+@extends('home', [
+    'title' => 'About'
+])
 
 @section('containerMenuUtama')
-    
-<div class="all-title-box">
+    @foreach($tentang as $tentang)   
+    <div class="all-title-box">
 		<div class="container text-center">
 			<h1>About Us<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
 		</div>
@@ -12,21 +14,20 @@
         <div class="container">
             <div class="section-title row text-center">
                 <div class="col-md-8 offset-md-2">
-                    <h3>About</h3>
-                    <p class="lead">Lorem Ipsum dolroin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem!</p>
+                    <h3>Tentang SMKS YP 17 Kota Blitar</h3>
+                    <p class="lead">{!! $tentang->deskripsi !!}</p>
                 </div>
             </div><!-- end title -->
         
             <div class="row align-items-center">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="message-box">
-                        <h4>2018 BEST SmartEDU education school</h4>
-                        <h2>Awards Winner Support Center</h2>
-                        <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+                        <h2>Kontak Sekolah</h2>
+                        <p>Kontak Telepon : {{ $tentang->contact_telp }}</p>
 
-                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis montes, nascetur ridiculus mus. Sed vitae rutrum neque. </p>
+                        <p>Kontak Whatsapp : {{ $tentang->contact_wa }}</p>
 
-                        <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
+                        <a href="https://www.google.com/maps/place/SMK+YP+17+Blitar/@-8.1062706,112.1688147,15z/data=!4m6!3m5!1s0x2e78eb8a915efea7:0x4b8f50f5e348f6d!8m2!3d-8.1062706!4d112.1688147!16s%2Fg%2F1hm58bc6w?entry=ttu" class="hover-btn-new orange"><span>Maps</span></a>
                     </div><!-- end messagebox -->
                 </div><!-- end col -->
 				
@@ -36,6 +37,7 @@
                     </div><!-- end media -->
                 </div><!-- end col -->
 			</div>
+
 			<div class="row align-items-center">
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="post-media wow fadeIn">
@@ -57,4 +59,5 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
+    @endforeach
 @endsection
