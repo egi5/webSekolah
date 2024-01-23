@@ -54,11 +54,11 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Jurusan:</h6>
-                    <a class="collapse-item" href="#">Teknik Kendaraan Ringan</a>
-                    <a class="collapse-item" href="#">Teknik Bisnis Sepeda Motor</a>
-                    <a class="collapse-item" href="#">Teknik Komputer Jaringan</a>
-                    <a class="collapse-item" href="#">Teknik Elektro</a>
-                    <a class="collapse-item" href="#">Desain Komunikasi Visual</a>
+                    <a class="collapse-item" href="/profileTKR">Teknik Kendaraan Ringan</a>
+                    <a class="collapse-item" href="/profileTBSM">Teknik Bisnis Sepeda Motor</a>
+                    <a class="collapse-item" href="/profileTKJ">Teknik Komputer Jaringan</a>
+                    <a class="collapse-item" href="/profileTE">Teknik Elektro</a>
+                    <a class="collapse-item" href="/profileDKV">Desain Komunikasi Visual</a>
                 </div>
             </div>
         </li>

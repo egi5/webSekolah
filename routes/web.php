@@ -100,11 +100,23 @@ Route::resource('/artikel', ArtikelController::class);
 //pengumuman
 Route::resource('/adminPengumuman', PengumumanController::class);
 
-//Pendaftaran
-Route::resource('/adminPendaftaran', PendaftaranController::class);
+//Jurusan
+Route::get('/profileTKR', [JurusanController::class, 'editTKR']);
+Route::put('/profileTKR/{id}', [JurusanController::class, 'updateTKR']);
+Route::get('/profileTBSM', [JurusanController::class, 'editTBSM']);
+Route::put('/profileTBSM/{id}', [JurusanController::class, 'updateTBSM']);
+Route::get('/profileTKJ', [JurusanController::class, 'editTKJ']);
+Route::put('/profileTKJ/{id}', [JurusanController::class, 'updateTKJ']);
+Route::get('/profileTE', [JurusanController::class, 'editTE']);
+Route::put('/profileTE/{id}', [JurusanController::class, 'updateTE']);
+Route::get('/profileDKV', [JurusanController::class, 'editDKV']);
+Route::put('/profileDKV/{id}', [JurusanController::class, 'updateDKV']);
 
 //Tentang Sekolah
 Route::resource('/adminTentang', TentangController::class);
+
+//Pendaftaran
+Route::resource('/adminPendaftaran', PendaftaranController::class);
 
 //Registrasi
 Route::resource('/registrasi', RegistrasiController::class);

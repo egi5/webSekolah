@@ -12,7 +12,6 @@ return new class extends Migration
             $table->id();
             $table->string('nama_jurusan')->nullable();
             $table->string('slug')->nullable();
-            $table->string('thumbnail')->nullable();
             $table->text('deskripsi')->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -13,7 +13,7 @@ class Jurusan extends Model
     protected $table    = 'jurusan';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'nama_jurusan', 'slug', 'thumbnail', 'deskripsi'
+        'nama_jurusan', 'slug', 'deskripsi'
     ];
 
     public function sluggable(): array
