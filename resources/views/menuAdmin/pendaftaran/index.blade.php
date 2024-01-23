@@ -41,7 +41,7 @@
               @foreach($pendaftaran as $pdt)
               <tr>
                 <td>{{ $pdt->link_pendaftaran }}</td>
-                <td>{{ $pdt->deskripsi }}</td>
+                <td>{!! $pdt->deskripsi !!}</td>
                 <td>
                     <a href="{{route('adminPendaftaran.edit', $pdt->id)}}" class="btn btn-info">Edit</a>
                 </td>

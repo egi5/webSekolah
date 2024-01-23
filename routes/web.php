@@ -14,6 +14,7 @@ use App\Http\Controllers\PendaftaranShowController;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\TentangShowController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\JurusanShowController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\LoginController;
 
@@ -48,21 +49,18 @@ Route::get('/kegiatan', [ArtikelShowController::class, 'index']);
 
 Route::get('/pengumuman', [PengumumanShowController::class, 'index']);
 
-Route::get('/pendaftaran',[PendaftaranShowController::class, 'index']);
+Route::get('/pendaftaran', [PendaftaranShowController::class, 'index']);
 
 
 //route jurusan
+Route::get('/tkr', [JurusanShowController::class, 'showTKR']);
+
 Route::get('/tkj',function(){
     return view('menuUtama.menuJurusan.tkj',[
         "title"=>"TKJ"
     ]);
 });
 
-Route::get('/tkr',function(){
-    return view('menuUtama.menuJurusan.tkr',[
-        "title"=>"TKR"
-    ]);
-});
 
 Route::get('/tbsm',function(){
     return view('menuUtama.menuJurusan.tbsm',[
