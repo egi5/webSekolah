@@ -29,7 +29,7 @@ class PendaftaranController extends Controller
         return view('menuAdmin/pendaftaran/edit', compact('pendaftaran'));
     }
 
-    public function update(Request $request, Pendaftaran $pendaftaran){
+    public function update(Request $request, $id){
         $deskripsi = $this->summernoteService->imageUpload('pendaftaran');
         
         $data       = [
@@ -40,8 +40,8 @@ class PendaftaranController extends Controller
 
         // dd($data);
 
-        Pendaftaran::where('id', 1 )->update($data);
+        Pendaftaran::where('id', $id )->update($data);
 
-        return redirect()->route('adminPendaftaran.index')->with('success','Data berhasil diupdate');
+        return redirect()->route('adminPendaftaran')->with('success','Data berhasil diupdate');
     }
 }

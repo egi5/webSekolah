@@ -25,8 +25,8 @@ class ArtikelController extends Controller
         return view('menuAdmin/artikel/index', compact('artikel'));
     }
 
-    public function show(Artikels $artikel){
-        $artikel = Artikels::find($artikel->id);
+    public function show($id){
+        $artikel = Artikels::find($id);
         return view('menuAdmin/artikel/show', compact('artikel'));
     }
 
@@ -51,15 +51,15 @@ class ArtikelController extends Controller
         
         Artikels::create($data);
 
-        return redirect()->route('artikel.index')->with('success','Data berhasil ditambah');
+        return redirect()->route('artikel')->with('success','Data berhasil ditambah');
     }
 
-    public function edit(Artikels $artikel){
-
+    public function edit($id){
+        $artikel = Artikels::find($id);
         return view('menuAdmin/artikel/edit', compact('artikel'));
     }
 
-    public function update(Request $request, Artikels $artikel){
+    public function update(Request $request, $id){
         $deskripsi = $this->summernoteService->imageUpload('artikel');
         
         $data       = [
@@ -69,16 +69,16 @@ class ArtikelController extends Controller
             'deskripsi' => $deskripsi,
         ];
 
-        Artikels::where('id', $artikel->id )->update($data);
+        Artikels::where('id', $id )->update($data);
 
-        return redirect()->route('artikel.index')->with('success','Data berhasil diupdate');
+        return redirect()->route('artikel')->with('success','Data berhasil diupdate');
 
     }
 
-    public function destroy(Artikels $artikel)
+    public function destroy($id)
     {   
-        Artikels::destroy($artikel->id);
-        return redirect()->route('artikel.index')->with('success','Data berhasil dihapus');
+        Artikels::destroy($id);
+        return redirect()->route('artikel')->with('error','Data berhasil dihapus');
     }
 
 }

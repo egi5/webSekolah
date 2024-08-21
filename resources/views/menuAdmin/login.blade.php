@@ -111,27 +111,29 @@
     <!-- Custom styles for this template -->
     <link href="/menuAdmin/css/sign-in.css" rel="stylesheet">
   </head>
-  <body class="d-flex align-items-center py-4 bg-body-tertiary">
-    <main class="form-signin w-100 m-auto">
-      <form action="/login" method="post">
-        @csrf
-        <div class="text-center">
-          <img src="menuAdmin/img/2.png" alt="" width="100" height="100">
+  <body>
+    <div class="container"><br>
+        <div class="col-md-4 col-md-offset-4">
+            <h2 class="text-center"><b>Login</b><br>Admin SMKS YP 17 Kota Blitar</h3>
+            <hr>
+            @if(session('error'))
+            <div class="alert alert-danger">
+                <b>Opps!</b> {{session('error')}}
+            </div>
+            @endif
+            <form action="{{ route('actionLogin') }}" method="post">
+            @csrf
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="username" name="username" class="form-control" placeholder="Username" required="">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+            </form>
         </div>
-        
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-        <div class="form-floating">
-          <label for="floatingInput">Username</label>
-          <input type="text" class="form-control" id="username" name="username" autofocus required>
-        </div>
-        <div class="form-floating">
-          <label for="floatingPassword">Password</label>
-          <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-body-secondary">&copy; SMKS YP 17 Kota Blitar 2023</p>
-      </form>
-    </main>
-  </body>
+    </div>
+</body>
 </html>

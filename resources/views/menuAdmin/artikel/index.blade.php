@@ -18,7 +18,7 @@
                 <h3 style="color: #566573;">Data Artikel</h3>
             </div>
             <div class="col-4 text-right">
-                <a href="{{route('artikel.create')}}" class="btn btn-primary btn-sm">Tambah Artikel</a>
+                <a href="/artikel/create" class="btn btn-primary btn-sm">Tambah Artikel</a>
             </div>
         </div>
         
@@ -53,8 +53,8 @@
                 <td>{{ $art->judul }}</td>
                 <td>
                     <a href="/artikel/{{$art->id}}" class="btn btn-success">Show</a>
-                    <a href="{{route('artikel.edit', $art->id)}}" class="btn btn-info">Edit</a>
-                    <form action="{{ route('artikel.destroy',$art->id) }}" method="post" class="d-inline">
+                    <a href="/artikel/{{$art->id}}/edit" class="btn btn-info">Edit</a>
+                    <form action="/artikel/{{$art->id}}" method="post" class="d-inline">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data Artikel ini?')">Delete</button>

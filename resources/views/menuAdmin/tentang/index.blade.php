@@ -45,7 +45,7 @@
                 <td>{{ $tg->email }}</td>
                 <td>{!! $tg->deskripsi !!}</td>
                 <td>
-                    <a href="{{route('adminTentang.edit', $tg->id)}}" class="btn btn-info">Edit</a>
+                    <a href="/adminTentang/{{$tg->id}}/edit" class="btn btn-info">Edit</a>
                 </td>
               </tr>
               @endforeach

@@ -18,7 +18,7 @@
                 <h3 style="color: #566573;">Data Pengumuman</h3>
             </div>
             <div class="col-4 text-right">
-                <a href="{{route('adminPengumuman.create')}}" class="btn btn-primary btn-sm">Tambah Pengumuman</a>
+                <a href="/adminPengumuman/create" class="btn btn-primary btn-sm">Tambah Pengumuman</a>
             </div>
         </div>
         
@@ -43,6 +43,7 @@
               <tr>
                   <th class="text-center" width="3%">No</th>
                   <th class="text-center" width="10%">Tanggal</th>
+                  <th class="text-center" width="10%">Tanggal</th>
                   <th class="text-center" width="53%">Judul Pengumuman</th>
                   <th class="text-center" width="20%">Aksi</th>
               </tr>
@@ -55,12 +56,13 @@
                 @foreach($pengumuman as $art)
                 <tr>
                     <td>{{ $no++ }}</td>
+                    <td>{{ $art->id }}</td>
                     <td>{{ $art->tanggal }}</td>
                     <td>{{ $art->judul }}</td>
                     <td>
-                        <a href="adminPengumuman/{{$art->id}}" class="btn btn-success">Show</a>
-                        <a href="adminPengumuman/{{ $art->id }}/edit" class="btn btn-info">Edit</a>
-                        <form action="adminPengumuman/{{$art->id}}" method="post" class="d-inline">
+                        <a href="/adminPengumuman/{{ $art->id }}" class="btn btn-success">Show</a>
+                        <a href="/adminPengumuman/{{ $art->id }}/edit" class="btn btn-info">Edit</a>
+                        <form action="/adminPengumuman/{{$art->id}}" method="post" class="d-inline">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data Artikel ini?')">Delete</button>

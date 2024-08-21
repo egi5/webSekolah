@@ -27,7 +27,7 @@
   </div>
   
   <div class="card-body">
-    <form  method="POST" action="{{ route('adminPengumuman.store') }}" id="formPengumuman" enctype="multipart/form-data">
+    <form  method="POST" action="/adminPengumuman/store" id="formPengumuman" enctype="multipart/form-data">
       {{ csrf_field() }}
   
       <div class="row">

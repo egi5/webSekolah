@@ -25,6 +25,12 @@ class PengumumanController extends Controller
         return view('menuAdmin/pengumuman/index', compact('pengumuman'));
     }
 
+    public function show($id){
+        $pengumuman = Pengumuman::where('id', $id)->first();
+        // dd($pengumuman);
+        return view('menuAdmin/pengumuman/show', compact('pengumuman'));
+    }
+
     public function create(){
         return view('menuAdmin/pengumuman/add');
     }
@@ -46,7 +52,7 @@ class PengumumanController extends Controller
         
         Pengumuman::create($data);
 
-        return redirect()->route('adminPengumuman.index')->with('success','Data berhasil ditambah');
+        return redirect()->route('adminPengumuman')->with('success','Data berhasil ditambah');
     }
 
     public function edit($id)
@@ -55,8 +61,7 @@ class PengumumanController extends Controller
         return view('menuAdmin.pengumuman.edit',compact('pengumuman'));
     }
 
-    public function update(Request $request, Pengumuman $pengumuman){
-        // $deskripsi = $this->summernoteService->imageUpload('pengumuman');
+    public function update(Request $request, $id){
         
         $data       = [
             'judul'     => $request->judul,
@@ -67,13 +72,13 @@ class PengumumanController extends Controller
 
         pengumuman::where('id', $request->id )->update($data);
 
-        return redirect()->route('adminPengumuman.index')->with('success','Data berhasil diupdate');
+        return redirect()->route('adminPengumuman')->with('success','Data berhasil diupdate');
 
     }
 
     public function destroy($id)
     {   
         Pengumuman::destroy($id);
-        return redirect()->route('adminPengumuman.index')->with('error','Data berhasil dihapus');
+        return redirect()->route('adminPengumuman')->with('error','Data berhasil dihapus');
     }
 }

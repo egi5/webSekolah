@@ -84,41 +84,66 @@ Route::get('/dkv',function(){
 
 //route admin
 Route::get('/admin',function(){
-  //  return view('menuAdmin.login',[
-    //    "title"=>"Login SMKS YP Kota Blitar"
-    //]);
+   return view('menuAdmin.login',[
+       "title"=>"Login SMKS YP Kota Blitar"
+    ]);
+});
+
+//login
+Route::get('/login', [LoginController::class,'login'])->name('login');
+Route::post('actionLogin', [LoginController::class,'actionLogin'])->name('actionLogin');
+
+//Registrasi
+Route::get('registrasi', [RegistrasiController::class, 'registrasi'])->name('registrasi');
+Route::post('registrasi/action', [RegistrasiController::class, 'actionregistrasi'])->name('actionregistrasi');
+
+//admin
+Route::get('/home', function(){
     return view('menuAdmin.home',[
         "title"=>"Admin"
     ]);
 });
 
-//Admin artikel
-Route::resource('/artikel', ArtikelController::class);
+//Admin Artikel
+Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel')->middleware('auth');
+Route::get('/artikel/create', [ArtikelController::class, 'create'])->middleware('auth');
+Route::get('/artikel/{id}', [ArtikelController::class, 'show'])->middleware('auth');
+Route::post('/artikel/store', [ArtikelController::class, 'store'])->middleware('auth');
+Route::get('/artikel/{id}/edit', [ArtikelController::class, 'edit'])->middleware('auth');
+Route::post('/artikel/update/{id}', [ArtikelController::class, 'update'])->middleware('auth');
+Route::delete('/artikel/{id}', [ArtikelController::class, 'destroy'])->middleware('auth');
 
-//pengumuman
-Route::resource('/adminPengumuman', PengumumanController::class);
+//Admin Pengumuman
+Route::get('/adminPengumuman', [PengumumanController::class, 'index'])->name('adminPengumuman')->middleware('auth');
+Route::get('/adminPengumuman/create', [PengumumanController::class, 'create'])->middleware('auth');
+Route::get('/adminPengumuman/{id}', [PengumumanController::class, 'show'])->middleware('auth');
+Route::post('/adminPengumuman/store', [PengumumanController::class, 'store'])->middleware('auth');
+Route::get('/adminPengumuman/{id}/edit', [PengumumanController::class, 'edit'])->middleware('auth');
+Route::post('/adminPengumuman/update/{id}', [PengumumanController::class, 'update'])->middleware('auth');
+Route::delete('/adminPengumuman/{id}', [PengumumanController::class, 'destroy'])->middleware('auth');
 
-//Jurusan
-Route::get('/profileTKR', [JurusanController::class, 'editTKR']);
-Route::put('/profileTKR/{id}', [JurusanController::class, 'updateTKR']);
-Route::get('/profileTBSM', [JurusanController::class, 'editTBSM']);
-Route::put('/profileTBSM/{id}', [JurusanController::class, 'updateTBSM']);
-Route::get('/profileTKJ', [JurusanController::class, 'editTKJ']);
-Route::put('/profileTKJ/{id}', [JurusanController::class, 'updateTKJ']);
-Route::get('/profileTE', [JurusanController::class, 'editTE']);
-Route::put('/profileTE/{id}', [JurusanController::class, 'updateTE']);
-Route::get('/profileDKV', [JurusanController::class, 'editDKV']);
-Route::put('/profileDKV/{id}', [JurusanController::class, 'updateDKV']);
+//Admin Jurusan
+Route::get('/profileTKR', [JurusanController::class, 'editTKR'])->name('profileTKR')->middleware('auth');
+Route::put('/profileTKR/{id}', [JurusanController::class, 'updateTKR'])->middleware('auth');
+Route::get('/profileTBSM', [JurusanController::class, 'editTBSM'])->name('profileTBSM')->middleware('auth');
+Route::put('/profileTBSM/{id}', [JurusanController::class, 'updateTBSM'])->middleware('auth');
+Route::get('/profileTKJ', [JurusanController::class, 'editTKJ'])->name('profileTKJ')->middleware('auth');
+Route::put('/profileTKJ/{id}', [JurusanController::class, 'updateTKJ'])->middleware('auth');
+Route::get('/profileTE', [JurusanController::class, 'editTE'])->name('profileTE')->middleware('auth');
+Route::put('/profileTE/{id}', [JurusanController::class, 'updateTE'])->middleware('auth');
+Route::get('/profileDKV', [JurusanController::class, 'editDKV'])->name('profileDKV')->middleware('auth');
+Route::put('/profileDKV/{id}', [JurusanController::class, 'updateDKV'])->middleware('auth');
 
-//Tentang Sekolah
-Route::resource('/adminTentang', TentangController::class);
+//Admin Tentang Sekolah
+Route::get('/adminTentang', [TentangController::class,'index'])->name('adminTentang')->middleware('auth');
+Route::get('/adminTentang/{id}/edit', [TentangController::class,'edit'])->middleware('auth');
+Route::post('/adminTentang/update/{id}', [TentangController::class,'update'])->middleware('auth');
 
-//Pendaftaran
-Route::resource('/adminPendaftaran', PendaftaranController::class);
+//Admin Pendaftaran
+Route::get('/adminPendaftaran', [PendaftaranController::class,'index'])->name('adminPendaftaran')->middleware('auth');
+Route::get('/adminPendaftaran/{id}/edit', [PendaftaranController::class,'edit'])->middleware('auth');
+Route::post('/adminPendaftaran/update/{id}', [PendaftaranController::class,'update'])->middleware('auth');
 
-//Registrasi
-Route::resource('/registrasi', RegistrasiController::class);
 
-//login
-Route::post('/login', [LoginController::class, "authenticate"]);
+
 

@@ -43,7 +43,7 @@
                 <td>{{ $pdt->link_pendaftaran }}</td>
                 <td>{!! $pdt->deskripsi !!}</td>
                 <td>
-                    <a href="{{route('adminPendaftaran.edit', $pdt->id)}}" class="btn btn-info">Edit</a>
+                    <a href="/adminPendaftaran/{{$pdt->id}}/edit" class="btn btn-info">Edit</a>
                 </td>
               </tr>
               @endforeach

@@ -28,8 +28,8 @@
     </div>
 
     <div class="card-body">
-        <form  method="POST" action="{{ route('adminPengumuman.update',$pengumuman->id) }}" id="form" enctype="multipart/form-data">
-            @method('PUT')
+        <form  method="POST" action="/adminPengumuman/update/{{$pengumuman->id}}" id="form" enctype="multipart/form-data">
+            @method('POST')
             {{ csrf_field() }}
             <input type="hidden" class="form-control" id="id" name="id" value="{{ $pengumuman->id}}">
             <div class="row">

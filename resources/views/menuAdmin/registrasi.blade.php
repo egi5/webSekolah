@@ -110,30 +110,39 @@
         <link href="/menuAdmin/css/sign-in.css" rel="stylesheet">
     </head>
     
-    <body class="d-flex align-items-center py-4 bg-body-tertiary">
-        <main class="form-registration w-100 m-auto">
-            <form action="{{ route('registrasi.store') }}" method="POST">
-                <h1 class="h3 mb-3 fw-normal">Registrasi Form</h1>
-
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                    {{-- <label for="Name">Name</label> --}}
+    <body>
+        <div class="container"><br>
+            <div class="col-md-6 col-md-offset-3">
+                <h2 class="text-center">FORM REGISTER USER</h3>
+                <hr>
+                @if(session('message'))
+                <div class="alert alert-success">
+                    {{session('message')}}
                 </div>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
-                    {{-- <label for="Name">Username</label> --}}
-                </div>
-                <div class="form-floating">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                    {{-- <label for="email">Email</label> --}}
-                </div>
-                <div class="form-floating">
-                {{-- <label for="floatingPassword">Password</label> --}}
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                </div>
-                <button class="btn btn-primary w-100 py-2 mt-2" type="submit">Registrasi Akun</button>
-                <p class="mt-5 mb-3 text-body-secondary">&copy; SMKS YP 17 Kota Blitar 2023</p>
-            </form>
-        </main>
+                @endif
+                <form action="{{route('actionregistrasi')}}" method="post">
+                @csrf
+                    <div class="form-group">
+                        <label><i class="fa fa-user"></i> Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Name" required="">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa fa-envelope"></i> Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa fa-user"></i> Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="Username" required="">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa fa-key"></i> Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-user"></i> Register</button>
+                    <hr>
+                    <p class="text-center">Sudah punya akun silahkan <a href="/login">Login Disini!</a></p>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

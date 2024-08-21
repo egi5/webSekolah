@@ -43,6 +43,6 @@ class TentangController extends Controller
 
         Tentang::where('id', 1 )->update($data);
 
-        return redirect()->route('adminTentang.index')->with('success','Data berhasil diupdate');
+        return redirect()->route('adminTentang')->with('success','Data berhasil diupdate');
     }
 }

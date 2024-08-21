@@ -8,7 +8,7 @@ use DomDocument;
 
 class SummernoteService
 {
-	public function imageUpload()
+	public function imageUpload($path)
 	{
 		$content = request()->input('isi');
 
@@ -23,8 +23,8 @@ class SummernoteService
             // list(, $data)      = explode(',', $data);
             // $data = base64_decode($data);
 
-            $image_name = "/uploads/img/artikel/".time().$k.'.png';
-            file_put_contents(public_path().$image_name,$data);
+            $image_name = time().$k.'.png';
+            file_put_contents(public_path("/uploads/img/".$path).$image_name,$data);
             // $path = public_path().$image_name;
             // File::put($path,$data);
         
